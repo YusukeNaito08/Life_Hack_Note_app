@@ -1,0 +1,55 @@
+<div class= "container">
+  <div class= "row">
+    <div class= "col-md-4 mb-3">
+      <div class= "card">
+        <div class= "card-body">
+          <div class= "d-flex flex-column align-items-center text-center">
+             <%= attachment_image_tag @user, :image, :fill, 120, 120, format: 'jpeg', fallback: "no_image.jpg", class:"rounded-circle" %>  
+            <div class= "mt-3">
+              <h4><%= @user.name %></h4>
+              <p>投稿数</p>
+              <p>タグ</p>
+              <p>カテゴリー</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class= "col-md-8 mb-3">
+    <%= form_with model: @user, local:true do|f| %>
+      <div class= "row mb-3">
+        <label for= "inputName", class= "col-sm-2 col-form-label">Name</label>
+        <div class=  "col-sm-10">
+          <%= f.text_field :name, autofocus: true, id:"inputName", class:"form-control" %>
+        </div>
+      </div>
+      <div class= "row mb-3">
+        <label for= "inputimage", class= "col-sm-2 col-form-label">Image</label>
+        <div class=  "col-sm-10">
+          <%= f.attachment_field :image, id:"inputimage",class:"form-control" %>
+        </div>
+      </div>
+      <div class= "row mb-3">
+        <label for= "inputemail", class= "col-sm-2 col-form-label">Email</label>
+        <div class= "col-sm-10">
+           <%= f.email_field :email, autocomplete: "email", class:"form-control", disabled: true %>
+        </div>
+      </div>
+      <div class= "row mb-3">
+        <label for= "inputpassword", class= "col-sm-2 col-form-label">Password</label>
+        <div class= "col-sm-10">
+          <%= f.password_field :password, autocomplete: "encrypted_password", class:"form-control", disabled: true %>
+        </div>
+      </div>
+      <div class= "row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				  <div class="text-right">
+				    <%= link_to "Cancel", user_path(current_user.id), class:"btn btn-secondary" %>
+				    <%= f.submit "Update", class:"btn btn-primary" %>
+			    </div>
+			  </div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
