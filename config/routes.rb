@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get '/about' => 'homes#about'
   resources :users, only: [:show, :edit, :update]
+  get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+  patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
   resources :post, only: [:index, :create, :show, :edit, :update, :destroy]
 end
