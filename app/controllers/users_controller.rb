@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @post_new = Post.new
+    @post_new.post_images.new
   end
 
   def edit
@@ -13,17 +14,17 @@ class UsersController < ApplicationController
     @user = User.find(params[:id]).update(user_params)
     redirect_to user_path(current_user)
   end
-  
+
   def unsubscribe
     @user = User.find(current_user.id)
   end
-  
+
   def withdrawal
    current_user.is_deleted = true
    current_user.save
    reset_session
    redirect_to root_path
-  end 
+  end
 
 private
   def user_params
