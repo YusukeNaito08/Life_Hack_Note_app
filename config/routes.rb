@@ -2,5 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'homes#top'
   get '/about' => 'homes#about'
-  resources :post, only: [:index, :create, :show, :edit, :destroy]
+  resources :users, only: [:show, :edit, :update]
+  get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+  patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
+  resources :post, only: [:index, :create, :show, :edit, :update, :destroy]
 end
