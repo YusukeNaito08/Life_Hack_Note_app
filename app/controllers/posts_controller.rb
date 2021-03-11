@@ -5,13 +5,17 @@ class PostsController < ApplicationController
     @post = Post.new(post_parms)
     @post.user_id = current_user.id
     @post.save
-    redirect_to user_path(current_user)
+    redirect_to  controller: :users, action: :show, id: current_user
   end
 
   def index
+    @posts = Post.all
   end
 
   def show
+    @post = Post.find(params[:id])
+    @user = User.find(@post.user_id)
+    @post_images_files = @post.post_images
   end
 
   def edit

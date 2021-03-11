@@ -1,0 +1,48 @@
+<div class= "container">
+  <div class= "row">
+    <div class= "col-md-3 mb-3">
+      <div class= "card">
+        <div class= "card-body">
+          <div class= "d-flex flex-column align-items-center text-center">
+            <%= attachment_image_tag @post.user, :image, :fill, 120, 120, format: 'jpeg', fallback: "no_image.jpg", class:"rounded-circle" %>
+            <div class= "mt-3">
+              <h4><%= @post.user.name %></h4>
+              <p>投稿数</p>
+              <p>タグ</p>
+              <p>カテゴリー</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class= "col">
+      <div class= "card max-with">
+        <div class= "card-header">
+        <%= attachment_image_tag @post.user, :image, :fill, 30, 30, format: 'jpeg', fallback: "no_image.jpg", class:"float-left rounded-circle"  %>
+        <%= @post.user.name %>
+          <div class="float-right">
+
+          </div>
+        </div>
+        <div class= "card-body">
+          <p class= "card-title"><%= @post.title %></p>
+          <p class= "card-text"><%= @post.content %></p>
+         
+            <% @post_images_files.each do |file| %>
+              <%= attachment_image_tag file, :file, :fill, 100, 100 %>
+            <% end %>
+          
+        </div>
+        <div class= "card-footer">
+          <div class="float-right">
+            <p>いいね数</p>
+          </div>
+          <div class="float-left">
+            <p>view</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
