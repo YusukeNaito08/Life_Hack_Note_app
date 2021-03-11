@@ -15,8 +15,8 @@
         </div>
       </div>
     </div>
-    <div class= "col">
-      <div class= "card max-with">
+    <div class= "col md-8">
+      <div class= "card">
         <div class= "card-header">
         <%= attachment_image_tag @post.user, :image, :fill, 30, 30, format: 'jpeg', fallback: "no_image.jpg", class:"float-left rounded-circle"  %>
         <%= @post.user.name %>
@@ -26,12 +26,14 @@
         </div>
         <div class= "card-body">
           <p class= "card-title"><%= @post.title %></p>
+          <p><small class="text-muted"><%= @post.created_at %></small></p>
           <p class= "card-text"><%= @post.content %></p>
-         
-            <% @post_images_files.each do |file| %>
-              <%= attachment_image_tag file, :file, :fill, 100, 100 %>
+          <% @post_images_files.each do |file| %>
+              <%= attachment_image_tag file, :file,  class:"card-img" %>
             <% end %>
-          
+          <p class= "card-text d-inline">タグ</p>
+          <p class= "card-text d-inline">タグ</p>
+          <p class= "card-text d-inline">タグ</p>
         </div>
         <div class= "card-footer">
           <div class="float-right">
@@ -41,6 +43,15 @@
             <p>view</p>
           </div>
         </div>
+      </div>
+      <div class= "row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				  <div class="text-right">
+				    <%= link_to "Back", user_path(current_user), class:"btn btn-secondary" %>
+				    <%= link_to "Destroy", post_path(@post), method: :delete, class:"btn btn-danger", data: {confirm: "削除しますか？"}  %>
+				    <%= link_to "Edit", edit_post_path(@post), class:"btn btn-success" %>
+			    </div>
+			  </div>
       </div>
     </div>
   </div>

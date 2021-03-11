@@ -1,0 +1,40 @@
+<div class= "container">
+  <div class= "row">
+    <div class= "mx-auto">
+    <%= form_with model: @post, local:true do|f| %>
+      <div class= "row mb-3">
+        <label for= "inputTitle", class= "col-sm-2 col-form-label">Title</label>
+        <div class=  "col-sm-10">
+          <%= f.text_field :title, id:"inputTitle", class:"form-control" %>
+        </div>
+      </div>
+      <div class= "row mb-3">
+        <label for= "inpuContent", class= "col-sm-2 col-form-label">Content</label>
+        <div class=  "col-sm-10">
+          <%= f.text_area :content, id:"inputContent",class:"form-control" %>
+        </div>
+      </div>
+      <div class= "row mb-3">
+        <label for= "inputImage", class= "col-sm-2 col-form-label">Image</label>
+        <div class= "col-sm-10">
+          <%= f.attachment_field :post_images_files, multiple: true, direct: true, presigned: true %>
+        </div>
+      </div>
+      <div class= "row mb-3">
+        <label for= "", class= "col-sm-2 col-form-label">Tag</label>
+        <div class= "col-sm-10">
+
+        </div>
+      </div>
+      <div class= "row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				  <div class="text-right">
+				    <%= link_to "Back", user_path(current_user), class:"btn btn-secondary" %>
+				    <%= f.submit "Update", class:"btn btn-primary" %>
+			    </div>
+			  </div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
