@@ -15,6 +15,7 @@
         <ul>
           <% if user_signed_in? %>
             <li><%=  link_to "Logout",  destroy_user_session_path, method: :delete %></li>
+            <li><%=  link_to "Index", posts_path%></li>
             <li><%=  link_to "Mypage", user_path(current_user.id)%></li>
             <li><%= link_to "Top", root_path %></li>
           <% else %>
