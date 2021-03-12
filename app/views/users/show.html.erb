@@ -1,0 +1,81 @@
+<div class= "container">
+  <div class= "row">
+    <div class= "col-md-4 mb-3">
+      <div class= "card">
+        <div class= "card-body">
+          <div class= "d-flex flex-column align-items-center text-center">
+            <%= attachment_image_tag @user, :image, :fill, 120, 120, format: 'jpeg', fallback: "no_image.jpg", class:"rounded-circle" %>
+            <div class= "mt-3">
+              <h4><%= @user.name %></h4>
+              <p>投稿数</p>
+              <p>タグ</p>
+              <p>カテゴリー</p>
+              <p><%= link_to "Edit", edit_user_path(@user) %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class= "col-md-8 mb-3">
+    <%= form_with model: @post, local:true do|f| %>
+      <div class= "row mb-3">
+        <label for= "inputTitle", class= "col-sm-2 col-form-label">Title</label>
+        <div class=  "col-sm-10">
+          <%= f.text_field :title, id:"inputTitle", class:"form-control" %>
+        </div>
+      </div>
+      <div class= "row mb-3">
+        <label for= "inpuContent", class= "col-sm-2 col-form-label">Content</label>
+        <div class=  "col-sm-10">
+          <%= f.text_area :content, id:"inputContent",class:"form-control" %>
+        </div>
+      </div>
+      <div class= "row mb-3">
+        <label for= "inputImage", class= "col-sm-2 col-form-label">Image</label>
+        <div class= "col-sm-10">
+          <%= f.attachment_field :post_images_files, multiple: true, direct: true, presigned: true %>
+        </div>
+      </div>
+      <div class= "row mb-3">
+        <label for= "", class= "col-sm-2 col-form-label">Tag</label>
+        <div class= "col-sm-10">
+
+        </div>
+      </div>
+      <div class= "row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				  <div class="text-right">
+				    <%= f.submit "Create", class:"btn btn-primary" %>
+			    </div>
+			  </div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+  <div class= "row">
+  <% @posts.each do |post| %>
+    <div class= "col-md-3 mb-4">
+      <div class= "card" style="max-width: 18rem;">
+        <div class= "card-header"> <%= attachment_image_tag post.user,
+          :image, :fill, 30, 30, format: 'jpeg', fallback: "no_image.jpg", class:"float-left rounded-circle"  %>
+          <div class="float-right">
+
+          </div>
+        </div>
+        <div class= "card-body ">
+          <h5 class= "card-title">#<%= link_to post.title, post_path(post.id) %></h5>
+
+        </div>
+        <div class= "card-footer">
+          <div class="float-right">
+            <p>いいね数</p>
+          </div>
+          <div class="float-left">
+            <p>view</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>
