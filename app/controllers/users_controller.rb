@@ -1,27 +1,27 @@
 class UsersController < ApplicationController
 
   def show
-    @user = User.find(params[:id])
-    @post = Post.new
+    @user= User.find(params[:id])
+    @post= Post.new
     @post.post_images.build
-    @posts = @user.posts
+    @posts= @user.posts
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user= User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id]).update(user_params)
+    @user= User.find(params[:id]).update(user_params)
     redirect_to user_path(current_user)
   end
 
   def unsubscribe
-    @user = User.find(current_user.id)
+    @user= User.find(current_user.id)
   end
 
   def withdrawal
-   current_user.is_deleted = true
+   current_user.is_deleted= true
    current_user.save
    reset_session
    redirect_to root_path
