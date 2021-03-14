@@ -26,6 +26,9 @@ class UsersController < ApplicationController
    reset_session
    redirect_to root_path
   end
+  
+  def bookmarks
+  end  
 
 private
   def user_params
