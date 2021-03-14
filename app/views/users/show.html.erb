@@ -10,8 +10,9 @@
             <%= attachment_image_tag @user, :image, :fill, 120, 120, format: 'jpeg', fallback: "no_image.jpg", class:"rounded-circle" %>
             <div class= "mt-3">
               <h4><%= @user.name %></h4>
-              <p>投稿数</p>
-              <p>タグ</p>
+              <%= link_to bookmarks_users_path do %>
+                <span class="fa fa-bookmark"><%= @user.bookmark_posts.count %></span>
+              <% end %>
             </div>
           </div>
         </div>

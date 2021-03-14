@@ -32,8 +32,8 @@
            <%end%>  
         </div>
         <div class= "card-footer">
-          <div class="float-right">
-            <p>いいね数</p>
+          <div class= "float-right", id= "bookmarks_buttons_<%= @post.id %>" >
+            <%= render partial: 'bookmarks/bookmark', locals: { post: @post}  %>
           </div>
           <div class="float-left">
             <p>view</p>
