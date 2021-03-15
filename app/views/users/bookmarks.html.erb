@@ -1,0 +1,23 @@
+<div class= "container">
+  <div class= "row">
+    <% current_user.bookmark_posts.each do |bookmark_post| %>
+       <div class= "col-md-3 mb-4">
+      <div class= "card text-center" style="max-width: 18rem;">
+        <div class= "card-header"> <%= attachment_image_tag bookmark_post.user, 
+          :image, :fill, 30, 30, format: 'jpeg', fallback: "no_image.jpg", class:"float-left rounded-circle"  %>
+          <div class="float-right">
+            <p>いいね数</p>
+          </div>
+        </div>
+        <div class= "card-body">
+          <p class= "card-text"><%=link_to bookmark_post.title, post_path(bookmark_post.id) %></p>
+          
+        </div>
+        <div class= "card-footer">
+          <p class= "text-right">view数</p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class= "container-fluid">
+  <div class="row">
+    <%= search_form_for @q do |f| %>
+    <%= f.search_field :title_or_content_cont, placeholder: "Title or Contents"  %>
+    <%= f.search_field :tags_tag_name_cont, placeholder: "tags"  %>
+    <%= f.submit %>
+    <% end %>
+    <p>フォロータグ /</p>
+    <p>新着</p>
+  </div>
+  <div class= "row">
+  <% @posts.each do |post| %>
+    <div class= "col-md-3 mb-4">
+      <div class= "card text-center" style="max-width: 18rem;">
+        <div class= "card-header"> <%= attachment_image_tag post.user, 
+          :image, :fill, 30, 30, format: 'jpeg', fallback: "no_image.jpg", class:"float-left rounded-circle"  %>
+          <div class="float-right">
+            <p>いいね数</p>
+          </div>
+        </div>
+        <div class= "card-body">
+          <p class= "card-text"><%=link_to post.title, post_path(post.id) %></p>
+          
+        </div>
+        <div class= "card-footer">
+          <p class= "text-right">view数</p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+ </div>
+</div>
