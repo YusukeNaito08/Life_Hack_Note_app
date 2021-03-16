@@ -12,4 +12,9 @@ Rails.application.routes.draw do
   resources :posts, only: [:create, :index, :show, :edit, :update, :destroy] do
    resource :bookmarks, only:[:create,:destroy,]
   end
+  resources :inquiries, only:[:new, :create]
 end
+
+
+ 
+
