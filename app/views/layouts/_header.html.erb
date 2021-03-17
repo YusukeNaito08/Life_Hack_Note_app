@@ -1,0 +1,33 @@
+<header>
+  <nav class= "navbar navbar-light navbar-expand-md bg-light">
+    <div class= "container-fluid">
+      <span class= "navbar-brand mb-0 h1">Daily Hack Note</span>
+        <button class= "navbar-toggler" type= "button" data-toggle= "collapse" data-target= "#navbarNav" 
+            aria-controls= "navbarNav" aria-expanded= "false" aria-label= "Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class= "collapse navbar-collapse", id= "navbarNav">
+          <ul class= "navbar-nav ml-auto">
+          <% if user_signed_in? %>
+            <li class= "list-item">
+              <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+            </li>
+            <li class= "list-item">
+              <%= link_to "Index", posts_path %>
+            </li>
+            <li class= "list-item">
+              <%= link_to "Mypage", user_path(current_user.id) %>  
+            </li>
+          <% else %>
+            <li class= "list-item">
+              <%= link_to "Sign_up", new_user_registration_path %>
+            </li>
+            <li class= "list-item">
+              <%= link_to "Login", user_session_path %>
+            </li>
+          </ul>
+        <% end %>
+        </div>
+    </div>
+  </nav>
+</header>
