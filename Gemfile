@@ -78,3 +78,6 @@ gem 'font-awesome-sass', '~> 5.13'
 gem 'rspec-rails'
 gem 'ransack'
 gem 'dotenv-rails'
+gem 'cancancan'
+gem 'rails_admin', '~> 2.0.0.beta'
+gem 'rails-i18n'  #日本語化
