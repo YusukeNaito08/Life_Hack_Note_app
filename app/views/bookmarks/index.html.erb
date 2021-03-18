@@ -1,0 +1,24 @@
+ <div class= "col-md-6">
+    <% @bookmarks_rank.each do |post| %>
+      <div class= "card">
+        <div class= "card-header bg-transparent"> <%= attachment_image_tag post.user,
+          :image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", class:"float-left rounded-circle"  %>
+          <div class="float-right fas fa-bookmark">
+            <%= post.bookmarks_count %>
+          </div>
+        </div>
+        <figure class= "card-body mb-0">
+          <blockquote class= "blockquote"><%=link_to post.title, post_path(post.id) %></blockquote>
+          <figcaption class= "blockquote-footer fas fa-tags mb-0">
+            <% post.tags.each do |tag| %>
+              <%= tag.tag_name %>
+            <% end %>
+            <div class="fas fa-eye ml-auto">
+              <%= post.impressions_count %>
+            </div>
+          </figcaption>
+          
+        </figure>
+      </div>
+    <% end %>
+    </div>

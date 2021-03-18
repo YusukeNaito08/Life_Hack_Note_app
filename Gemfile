@@ -81,3 +81,4 @@ gem 'dotenv-rails'
 gem 'cancancan'
 gem 'rails_admin', '~> 2.0.0.beta'
 gem 'rails-i18n'  #日本語化
+gem 'impressionist', '~>1.6.1'
