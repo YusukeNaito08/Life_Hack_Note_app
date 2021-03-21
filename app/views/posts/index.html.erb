@@ -1,52 +1,62 @@
 <div class= "container-fluid">
   <div class="row">
-    <%= search_form_for @q do |f| %>
-    <%= f.search_field :title_or_content_cont, placeholder: "Title or Contents"  %>
-    <%= f.search_field :tags_tag_name_cont, placeholder: "tags"  %>
-    <%= f.submit %>
+    <div class="col-md-8 mt-5">
+    <div class="form-group form-inline">
+    <%= search_form_for @q  do |f| %>
+      <%= f.search_field :title_or_content_cont, placeholder: "Title or Contents", class: "form-control" %>
+      <%= f.search_field :tags_tag_name_cont, placeholder: "tags",  class: "form-control" %>
+      <%= f.button :type => "submit", style: 'border-style: none;' do %>
+        <i class='fas fa-search'></i>
+      <% end %>
     <% end %>
-    <p>フォロータグ /</p>
-    <p>新着</p>
-    <p><%=link_to "いいね", bookmarks_index_path %></p>
-  </div>
-
-
-  <div class= "row">
-    <div class= "col-md-3">
-
     </div>
-    <div class= "col-md-6">
+    </div>
+    <div class="col-md-4 mt-5">
+
+    <div class="dropdown">
+
+      <button class="dropdown-toggle" data-toggle="dropdown"></button>
+      <ul class="dropdown-menu" >
+        <li class= "dropdown-item">
+        <%= sort_link(@q, :bookmarks_count, 'Bookmark', default_order: :desc)%>
+        </li>
+        <li class= "dropdown-item">
+        <%= sort_link(@q, :impressions_count, 'View', default_order: :desc) %>
+        </li>
+        <li class= "dropdown-item" >
+        <%= sort_link(@q, :created_at, 'Date', default_order: :asc) %>
+        </li>
+      </ul>
+    </div>
+    </div>
+    </div>
+    <div class= "row">
     <% @posts.each do |post| %>
-      <div class= "card">
-        <div class= "card-header bg-transparent"> <%= attachment_image_tag post.user,
-          :image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", class:"float-left rounded-circle"  %>
-          <div class="float-right fas fa-bookmark">
-            <%= post.bookmarks_count %>
-          </div>
-        </div>
-        <figure class= "card-body mb-0">
-          <blockquote class= "blockquote"><%=link_to post.title, post_path(post.id) %></blockquote>
-          <figcaption class= "blockquote-footer fas fa-tags mb-0">
-            <% post.tags.each do |tag| %>
-              <%= tag.tag_name %>
-            <% end %>
-            <div class="fas fa-eye ml-auto">
-              <%= post.impressions_count %>
-            </div>
-          </figcaption>
-          
-        </figure>
-      </div>
-    <% end %>
-    </div>
     <div class= "col-md-3">
-    
-  </div>
+      <div class= "card">
+        <div class= "card-header bg-transparent border-bottom-0 "> <%= attachment_image_tag post.user,
+          :image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", class:"float-left rounded-circle" %>
+        <div class="float-right fas fa-bookmark">
+          <%= post.bookmarks_count %>
+        </div>
+        </div>
+        <div class= "card-body">
+          <blockquote class= "blockquote"><%=link_to post.title, post_path(post.id), class: "card-title" %></blockquote>
+          <figcaption>
+          <small class="text-muted"><%= post.created_at %></small>
+          </figcaption>
+            <div class= footer>
+            <% post.tags.each do |tag| %>
+              <small class="fas fa-tag">
+              <%=tag.tag_name %>
+              </small>
+            <% end %>
 
-
-
-
-
-
- </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <% end %>
+    <%= paginate(@posts) %>
+    </div>
 </div>

@@ -13,9 +13,7 @@ class BookmarksController < ApplicationController
     bookmark.destroy
   end  
   
-  def index
-   @bookmarks_rank= Post.order(bookmarks_count: 'DESC').limit(5)
-  end
+  
   
   
   

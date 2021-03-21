@@ -56,8 +56,8 @@
   </div>
   <div class= "row">
   <% @posts.each do |post| %>
-    <div class= "col-md-3 mb-4">
-      <div class= "card" style="max-width: 18rem;">
+    <div class= "col-md-4 mb-4">
+      <div class= "card">
         <div class= "card-header"> <%= attachment_image_tag post.user,
           :image, :fill, 30, 30, format: 'jpeg', fallback: "no_image.jpg", class:"float-left rounded-circle"  %>
           <div class="float-right">

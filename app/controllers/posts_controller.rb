@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  
 
   def create
     @post= Post.new(post_parms)
@@ -12,9 +13,8 @@ class PostsController < ApplicationController
 
   def index
     @q= Post.ransack(params[:q])
-    @posts= @q.result.includes(:tags)
+    @posts= @q.result.includes(:tags, :user).page(params[:page])
     #@bookmark_rank= Bookmark.group(:post_id).order('count(post_id) desc').limit(5).pluck(:post_id)
-    @bookmark_ranks= Post.order(bookmarks_count: 'DESC').limit(5)
   end
 
   def show
@@ -40,8 +40,17 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to user_path(current_user)
   end
-
+  
+  def search
+   @results = @q.result.includes(:tags)
+  end
+  
 private
+
+  def set_q
+  @post= Post.ransack(params[:q])
+  end  
+
   def post_parms
     params.require(:post).permit(:title, :content, post_images_files: [])
   end
