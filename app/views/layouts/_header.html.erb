@@ -1,0 +1,33 @@
+<header>
+  <nav class= "navbar navbar-expand-lg navbar-light">
+    <div class= "container  header ">
+      <span class= "navbar-brand  h1"><%= link_to "Life Hack Note", posts_path, class:"header-logo" %></span>
+          <ul class= "navbar-nav">
+          <% if user_signed_in? %>
+            <li class= "nav-item dropdown">
+              <a class= "nav-link  dropdown-toggle" data-toggle= "dropdown" aria-expanded= "false" id:"navbarDropdown" role= "button">
+                <%= attachment_image_tag current_user,
+                :image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", class:"float-left rounded-circle"%>
+              </a>
+                <ul class= "dropdown-menu",  aria-labelledby= "navbarDropdown">
+                  <li>
+                    <%= link_to "My Page", user_path(current_user), class:"dropdown-item" %>
+                  </li>
+                  <li><hr class= "dropdown-divider"></li>
+                  <li>
+                    <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"dropdown-item"  %>
+                  </li>
+                </ul>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to "Sign Up", new_user_registration_path, class:"list-item nav" %>
+            </li>
+            <li>
+              <%= link_to "Sign In", user_session_path, class:"list-item nav" %>
+            </li>
+          </ul>
+        <% end %>
+    </div>
+  </nav>
+</header>

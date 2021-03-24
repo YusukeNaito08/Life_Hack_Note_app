@@ -12,9 +12,25 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+/*global $*/
 
+//= require jquery
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-//= require jquery
+
+
+$(function () {
+$('div#top-info').css('display', 'none').fadeIn(3000);
+});
+
+$(function() {
+  $('#back i').on('click',function(event){
+    $('body, html').animate({
+      scrollTop:0
+    }, 800);
+    event.preventDefault();
+  });
+});
+

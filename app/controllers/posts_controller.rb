@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   def create
     @post= Post.new(post_parms)
     @post.user_id= current_user.id
-    tag_list= params[:post][:tag_name].split(nil) 
+    tag_list= params[:post][:tag_name].split(nil)
     if @post.save
       @post.save_posts(tag_list)
       redirect_to  controller: :users, action: :show, id: current_user
@@ -13,16 +13,16 @@ class PostsController < ApplicationController
 
   def index
     @q= Post.ransack(params[:q])
-    @posts= @q.result.includes(:tags) 
-
+    @posts= @q.result.includes(:tags, :user).page(params[:page])
+    #@bookmark_rank= Bookmark.group(:post_id).order('count(post_id) desc').limit(5).pluck(:post_id)
   end
-  
 
   def show
     @post= Post.find(params[:id])
     @user= User.find(@post.user_id)
     @post_images_files= @post.post_images
     @tags= @post.tags
+    impressionist(@post, nil, unique:[:impressionable_id, :ip_address]) #:session_hash
   end
 
   def edit
@@ -41,7 +41,16 @@ class PostsController < ApplicationController
     redirect_to user_path(current_user)
   end
 
+  def search
+   @results = @q.result.includes(:tags)
+  end
+
 private
+
+  def set_q
+  @post= Post.ransack(params[:q])
+  end
+
   def post_parms
     params.require(:post).permit(:title, :content, post_images_files: [])
   end
