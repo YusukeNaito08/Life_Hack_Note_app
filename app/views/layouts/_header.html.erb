@@ -1,33 +1,33 @@
 <header>
-  <nav class= "navbar navbar-light navbar-expand-md bg-light">
-    <div class= "container-fluid">
-      <span class= "navbar-brand mb-0 h1">Daily Hack Note</span>
-        <button class= "navbar-toggler" type= "button" data-toggle= "collapse" data-target= "#navbarNav" 
-            aria-controls= "navbarNav" aria-expanded= "false" aria-label= "Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class= "collapse navbar-collapse", id= "navbarNav">
-          <ul class= "navbar-nav ml-auto">
+  <nav class= "navbar navbar-expand-lg navbar-light">
+    <div class= "container  header ">
+      <span class= "navbar-brand  h1"><%= link_to "Life Hack Note", posts_path, class:"header-logo" %></span>
+          <ul class= "navbar-nav">
           <% if user_signed_in? %>
-            <li class= "list-item">
-              <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-            </li>
-            <li class= "list-item">
-              <%= link_to "Index", posts_path %>
-            </li>
-            <li class= "list-item">
-              <%= link_to "Mypage", user_path(current_user.id) %>  
+            <li class= "nav-item dropdown">
+              <a class= "nav-link  dropdown-toggle" data-toggle= "dropdown" aria-expanded= "false" id:"navbarDropdown" role= "button">
+                <%= attachment_image_tag current_user,
+                :image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", class:"float-left rounded-circle"%>
+              </a>
+                <ul class= "dropdown-menu",  aria-labelledby= "navbarDropdown">
+                  <li>
+                    <%= link_to "My Page", user_path(current_user), class:"dropdown-item" %>
+                  </li>
+                  <li><hr class= "dropdown-divider"></li>
+                  <li>
+                    <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"dropdown-item"  %>
+                  </li>
+                </ul>
             </li>
           <% else %>
-            <li class= "list-item">
-              <%= link_to "Sign_up", new_user_registration_path %>
+            <li>
+              <%= link_to "Sign Up", new_user_registration_path, class:"list-item nav" %>
             </li>
-            <li class= "list-item">
-              <%= link_to "Login", user_session_path %>
+            <li>
+              <%= link_to "Sign In", user_session_path, class:"list-item nav" %>
             </li>
           </ul>
         <% end %>
-        </div>
     </div>
   </nav>
 </header>

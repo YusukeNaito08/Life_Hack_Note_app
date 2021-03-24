@@ -1,0 +1,48 @@
+// Place all the styles related to the homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.col.info,
+.col.image {
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+.image {
+  background-image: url("<%= asset_path('pexels-cottonbro-4769486.jpg') %>") ;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+ .top-title, .top-text,  {
+font-family: "Roboto", "Arial","sans-serif";
+color: #99b6b4;
+margin-bottom: 15px;
+}
+
+.link_top {
+font-size: 1rem;
+background: #99b6b4;
+border-radius: 5px;
+padding: 10px 20px;
+color: #fff;
+text-decoration: none;
+display: inline-block;
+margin-top: 18px;
+}
+.link_top:hover {
+color: #fff;
+}
+
+
+
+@media all and (min-width: 570px) {
+  .wrapper {
+    display: flex;
+  }
+}

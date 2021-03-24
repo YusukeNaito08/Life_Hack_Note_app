@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  
+
 
   def create
     @post= Post.new(post_parms)
@@ -40,16 +40,16 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to user_path(current_user)
   end
-  
+
   def search
    @results = @q.result.includes(:tags)
   end
-  
+
 private
 
   def set_q
   @post= Post.ransack(params[:q])
-  end  
+  end
 
   def post_parms
     params.require(:post).permit(:title, :content, post_images_files: [])

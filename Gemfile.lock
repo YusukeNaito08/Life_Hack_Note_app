@@ -104,6 +104,9 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.9.3)
+      devise (>= 4.7.1)
+    devise-i18n-views (0.3.7)
     diff-lcs (1.4.4)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
@@ -113,6 +116,13 @@ GEM
       railties (>= 3.2)
     erubi (1.10.0)
     execjs (2.7.0)
+    factory_bot (6.1.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.1.0)
+      factory_bot (~> 6.1.0)
+      railties (>= 5.0.0)
+    faker (2.17.0)
+      i18n (>= 1.6, < 2)
     ffi (1.15.0)
     font-awesome-sass (5.15.1)
       sassc (>= 1.11)
@@ -358,7 +368,11 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  devise-i18n
+  devise-i18n-views
   dotenv-rails
+  factory_bot_rails
+  faker
   font-awesome-sass (~> 5.13)
   impressionist (~> 1.6.1)
   jbuilder (~> 2.5)

@@ -10,15 +10,10 @@
   </head>
 
   <body>
-
-   <%= render 'layouts/header' %>
+  <%= render 'layouts/header' %>
     
+  <%= render 'layouts/flashes' %>
 
-    <% if flash[:notice] %>
-      <div class="flash">
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
     
     <%= yield %>
   </body>
