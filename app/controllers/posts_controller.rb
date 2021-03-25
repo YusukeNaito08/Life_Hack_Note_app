@@ -1,10 +1,14 @@
 class PostsController < ApplicationController
-
+  
+  def new
+    @post= Post.new
+    @post.post_images.build
+  end
 
   def create
     @post= Post.new(post_parms)
     @post.user_id= current_user.id
-    tag_list= params[:post][:tag_name].split(nil)
+    tag_list= params[:post][:tag_name].split(',')
     if @post.save
       @post.save_posts(tag_list)
       redirect_to  controller: :users, action: :show, id: current_user
@@ -15,7 +19,11 @@ class PostsController < ApplicationController
     @q= Post.ransack(params[:q])
     @posts= @q.result.includes(:tags, :user).page(params[:page])
     #@bookmark_rank= Bookmark.group(:post_id).order('count(post_id) desc').limit(5).pluck(:post_id)
+    #@tag_ranks= Tag.find(PostTagReration.group(:tag_id).order('count(tag_id)desc').limit(5).pluck(:tag_id))
+    @tag_ranks= PostTagReration.joins(:tag).group("tag_name").order('count_all DESC').count
   end
+    
+  
 
   def show
     @post= Post.find(params[:id])

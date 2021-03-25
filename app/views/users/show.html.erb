@@ -6,25 +6,27 @@
     
   <div class= "col-md-8 mb-4">
   <% @posts.each do |post| %>
-      <div class= "card">
-        <div class= "card-header"> <%= attachment_image_tag post.user,
-          :image, :fill, 30, 30, format: 'jpeg', fallback: "no_image.jpg", class:"float-left rounded-circle"  %>
-          <div class="float-right">
+      <div class= "card post">
+        <div class= "card-header bg-transparent border-bottom-0 "> <%= attachment_image_tag post.user,
+          :image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", class:"float-left rounded-circle" %>
+        <div class="float-right fas fa-bookmark">
+          <%= post.bookmarks_count %>
+        </div>
+        </div>
+        <div class= "card-body">
+          <blockquote class= "blockquote"><%=link_to post.title, post_path(post.id), class: "card-title" %></blockquote>
+          <figcaption>
+          <small class="text-muted"><%= post.created_at %></small>
+          </figcaption>
+            <div class= footer>
+            <% post.tags.each do |tag| %>
+              <small class="fas fa-tag">
+              <%=tag.tag_name %>
+              </small>
+            <% end %>
 
+            </div>
           </div>
-        </div>
-        <div class= "card-body ">
-          <h5 class= "card-title">#<%= link_to post.title, post_path(post.id) %></h5>
-
-        </div>
-        <div class= "card-footer">
-          <div class="float-right">
-            <p>いいね数</p>
-          </div>
-          <div class="float-left">
-            <p>view</p>
-          </div>
-        </div>
       </div>
   <% end %>
     </div>
