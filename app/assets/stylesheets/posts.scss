@@ -4,9 +4,7 @@
 
 
 
-.dropdown-toggle{
-float: right;
-}
+
 
 .blockquote {
   margin-bottom: 0px;
@@ -16,7 +14,11 @@ float: right;
 }
 }
 
-.dropdown-item{
-  padding: 5px 0;
-  
+
+.rank-tag {
+  display: flex;
+  margin-bottom: 10px;
+}
+.rank-tag-number {
+  padding-right: 10px;
 }

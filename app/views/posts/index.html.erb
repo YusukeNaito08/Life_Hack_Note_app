@@ -1,50 +1,67 @@
 <div class= "container">
-  <div class="row">
-    <div class="col-mt-5">
-    <div class="form-group form-inline">
-    <%= search_form_for @q  do |f| %>
-      <%= f.search_field :title_or_content_cont, placeholder: "Title or Contents", class: "form-control" %>
+  <div class="row mt-5">
+  <div class="col-md-4 mt-5">
+    <div class="sort-list">
+    <ul class="list-group w-50 mb-5" >
+      <li class= "list-group-item">
+        <%= sort_link(@q, :bookmarks_count, 'Bookmark', default_order: :desc)%>
+      </li>
+      <li class= "list-group-item">
+        <%= sort_link(@q, :impressions_count, 'View', default_order: :desc) %>
+      </li>
+      <li class= "list-group-item" >
+        <%= sort_link(@q, :created_at, 'Date', default_order: :asc) %>
+      </li>
+    </ul>
+    </div>
+    <div class="search-tag-container mb-5">
+      <div class="tag-container-header">
+        <p>タグで探す</p>
+      </div>
+      <div class="form-group form-inline tag">
+      <%= search_form_for @q  do |f| %>
       <%= f.search_field :tags_tag_name_cont, placeholder: "tags",  class: "form-control" %>
       <%= f.button :type => "submit", style: 'border-style: none;' do %>
-        <i class='fas fa-search'></i>
+         <i class='fas fa-search'></i>
       <% end %>
     <% end %>
     </div>
-    </div>
-    <div class="col-md-4 mt-5">
-
-    <div class="dropdown">
-
-      <button class="dropdown-toggle" data-toggle="dropdown"></button>
-      <ul class="dropdown-menu" >
-        <li class= "dropdown-item">
-        <%= sort_link(@q, :bookmarks_count, 'Bookmark', default_order: :desc)%>
-        </li>
-        <li class= "dropdown-item">
-        <%= sort_link(@q, :impressions_count, 'View', default_order: :desc) %>
-        </li>
-        <li class= "dropdown-item" >
-        <%= sort_link(@q, :created_at, 'Date', default_order: :asc) %>
-        </li>
-      </ul>
-    </div>
-    </div>
-    </div>
-    <div class= "row">
-      <div class= "col-md-4">
-        <div class="rank-tag-all">
-        <% @tag_ranks.each.with_index do |tag,i| %>
-          <div class="rank-tag-num">第<%= i + 1 %>位 </div> 
-          <div class="rank-tag"><%= tag.first %>(<%=tag.second%>)</div>
-        <%end%>
-        </div>
-
+    <div class="rank-tag-all">
+      <div class= "rank-tag-header">
+        <p>タグ Top 5</p>
       </div>
-    <div class= "col-md-8">
+      <div class="rank-tag-contents">
+      <% @tag_ranks.each.with_index do |tag,i| %>
+        <div class="rank-tag">
+          <div class="rank-tag-number">
+            <%= i + 1 %>
+          </div>
+          <span class="fas far-tag">
+            <%= tag.first %>(<%=tag.second %>)
+          </span>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class= "col-md-8">
+    <div class="row">
+      <div class="col-md-12">
+      <div class="form-group form-inline float-right">
+      <%= search_form_for @q  do |f| %>
+        <%= f.search_field :title_or_content_cont, placeholder: "Title or Contents", class: "form-control" %>
+        <%= f.button :type => "submit", style: 'border-style: none;' do %>
+          <i class='fas fa-search'></i>
+        <% end %>
+      <% end %>
+    </div>
+    </div>
+  </div>
     <% @posts.each do |post| %>
       <div class= "card">
         <div class= "card-header bg-transparent border-bottom-0 "> <%= attachment_image_tag post.user,
-          :image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", class:"float-left rounded-circle" %>
+          :image, :fill, 40, 40, format: 'jpeg', size:'50x50',fallback: "no_image.jpg", class:"float-left rounded-circle" %>
         <div class="float-right fas fa-bookmark">
           <%= post.bookmarks_count %>
         </div>
@@ -52,7 +69,7 @@
         <div class= "card-body">
           <blockquote class= "blockquote"><%=link_to post.title, post_path(post.id), class: "card-title" %></blockquote>
           <figcaption>
-          <small class="text-muted"><%= post.created_at %></small>
+          <small class="text-muted"><%=l post.created_at, format: :short %></small>
           </figcaption>
             <div class= footer>
             <% post.tags.each do |tag| %>
@@ -60,12 +77,15 @@
               <%=tag.tag_name %>
               </small>
             <% end %>
+            <small class="float-right fas fa-eye">
+          <%= post.impressions_count %>
+          </small>
 
             </div>
           </div>
       </div>
     <% end %>
-    </div>
     <%= paginate(@posts) %>
+    </div>
     </div>
 </div>

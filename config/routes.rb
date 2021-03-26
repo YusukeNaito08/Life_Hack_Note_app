@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get '/about' => 'homes#about'
   resources :users, only: [:show, :edit, :update] do
-    collection do
+    member do
       get :bookmarks
     end
   end

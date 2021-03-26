@@ -1,14 +1,14 @@
 <div class= "container">
   <div class= "row mt-5">
-    
+
   <%= render 'users/profile', user: @user %>
 
-    
+
   <div class= "col-md-8 mb-4">
   <% @posts.each do |post| %>
       <div class= "card post">
         <div class= "card-header bg-transparent border-bottom-0 "> <%= attachment_image_tag post.user,
-          :image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", class:"float-left rounded-circle" %>
+          :image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size:'50x50', class:"float-left rounded-circle" %>
         <div class="float-right fas fa-bookmark">
           <%= post.bookmarks_count %>
         </div>
@@ -24,24 +24,19 @@
               <%=tag.tag_name %>
               </small>
             <% end %>
-
             </div>
           </div>
-      </div>
-  <% end %>
+        </div>
+      <% end %>
     </div>
-    
-    
-    
+    <div class="paginate">
+      <%= paginate(@posts) %>
+    </div>
+  
     <span id="back">
       <a href="#">
         <i class="fas fa-arrow-circle-up"></i>
       </a>
     </span>
-    
-    
-    
-    
-  <%= link_to "お問い合わせ", new_inquiry_path %>
   </div>
 </div>

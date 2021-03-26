@@ -5,24 +5,30 @@ class Post < ApplicationRecord
   has_many :tags, through: :post_tag_rerations
   has_many :bookmarks, dependent: :destroy
   has_many :bookmarked_users, through: :bookmarks, source: :user
+  
+  
+  validates :title,  presence: true, length: {maximum: 20 }
+  validates :content, presence: true
+  
 
   accepts_attachments_for :post_images, attachment: :file
 
   #View数
   is_impressionable counter_cache: true
-
+  
+  #bookmark 
   def bookmarked_by?(user)
     bookmarks.where(user_id: user.id).exists?
   end
 
 
-
+  #タグ
   def save_posts(tags)
-    current_tags = self.tags.pluck(:tga_name) unless self.tags.nil? #pluckメソッド一旦全てのデータを取得
+    current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
     old_tags = current_tags - tags
     new_tags = tags - current_tags
 
-    #Destroy
+   
     old_tags.each do |old_name|
       self.tags.delete Tag.find_by(tag_name:old_name)
     end

@@ -2,9 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+
 // user my_page
-
-
 .card.profile, .card.user-card {
   position: sticky;
   top: 50px;
@@ -12,8 +12,8 @@
 
 .fas.fa-cogs.edit {
   font-size: 1.5em;
-   color:#99b6b4;
-   margin-top: 15px;
+  color:#99b6b4;
+  margin-top: 15px;
 }
 
 .bookmark {
@@ -21,6 +21,9 @@
 }
 .bookmark:hover {
   color: #1F1E23;
+}
+.paginate {
+  margin: auto;
 }
 
 #back {

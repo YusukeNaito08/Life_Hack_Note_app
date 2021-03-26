@@ -19,6 +19,7 @@
 @import 'homes';
 @import 'posts';
 @import 'users';
+@import 'tagsinput';
 
 
 * {
@@ -29,12 +30,13 @@ font-family: "Roboto", "Arial","sans-serif";
 }
 
 
+
+
 /* header */
 
 
 .container.header {
     border-bottom: 2px solid #8E6E38;
-   
 }
 
 .navbar-brand  h1, .header-logo, 
@@ -55,17 +57,33 @@ font-family: "Roboto", "Arial","sans-serif";
     color: #1F1E23;
 }
 
+//footer
 
+footer {
+  background-color:#99b6b4;
+  width: 100%;
+  
+}
+
+
+.footer-title, .footer-subtitle,
+.footer-column {
+  margin: 0 auto;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.footer-column-item {
+    display: grid;
+}
 
 
 .card {
     background-color: #fff;
-    border: 0 solid #eee;
-}
-
-.card.post {
-    border-bottom: 1px solid #99b6b4;  
-    
+    border: 1px solid #eee;
+    border-bottom: 1px solid #99b6b4;
 }
 
 

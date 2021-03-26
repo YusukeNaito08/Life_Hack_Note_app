@@ -1,5 +1,11 @@
 class PostsController < ApplicationController
   
+  def index
+    @q= Post.ransack(params[:q])
+    @posts= @q.result.includes(:user,:tags,:post_tag_rerations).page(params[:page]).per(8)
+    @tag_ranks= PostTagReration.joins(:tag).group("tag_name").limit(5).order('count_all DESC').count
+  end
+  
   def new
     @post= Post.new
     @post.post_images.build
@@ -10,20 +16,14 @@ class PostsController < ApplicationController
     @post.user_id= current_user.id
     tag_list= params[:post][:tag_name].split(',')
     if @post.save
-      @post.save_posts(tag_list)
-      redirect_to  controller: :users, action: :show, id: current_user
-    end
+       @post.save_posts(tag_list)
+       flash[:notice] = "投稿しました"
+      redirect_to  user_path(@post)
+    else
+      flash[:alert] = "投稿に失敗しました"
+      render :new
+    end  
   end
-
-  def index
-    @q= Post.ransack(params[:q])
-    @posts= @q.result.includes(:tags, :user).page(params[:page])
-    #@bookmark_rank= Bookmark.group(:post_id).order('count(post_id) desc').limit(5).pluck(:post_id)
-    #@tag_ranks= Tag.find(PostTagReration.group(:tag_id).order('count(tag_id)desc').limit(5).pluck(:tag_id))
-    @tag_ranks= PostTagReration.joins(:tag).group("tag_name").order('count_all DESC').count
-  end
-    
-  
 
   def show
     @post= Post.find(params[:id])
@@ -35,12 +35,21 @@ class PostsController < ApplicationController
 
   def edit
     @post= Post.find(params[:id])
+    @tag_list= @post.tags.pluck(:tag_name).join(",")
   end
 
   def update
     @post= Post.find(params[:id])
-    @post.update(post_parms)
-    redirect_to post_path(@post.id)
+    @post.user_id= current_user.id
+    tag_list= params[:post][:tag_name].split(',')
+    if  @post.update_attributes(post_parms)
+        @post.save_posts(tag_list)
+        flash[:notice] = '投稿を編集しました'
+        redirect_to post_path(@post.id)
+    else
+      flash[:alert] = "投稿の編集、失敗しました"
+      render :edit
+    end
   end
 
   def destroy
@@ -49,15 +58,10 @@ class PostsController < ApplicationController
     redirect_to user_path(current_user)
   end
 
-  def search
-   @results = @q.result.includes(:tags)
-  end
+
 
 private
 
-  def set_q
-  @post= Post.ransack(params[:q])
-  end
 
   def post_parms
     params.require(:post).permit(:title, :content, post_images_files: [])
