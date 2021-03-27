@@ -15,7 +15,7 @@
         <div class="form-label-group">
           <label for= "inputImage", class= "col-sm-3 col-form-label">ファイル</label>
            <small>＊shift + クリックまたはctrl + クリックで複数画像を選択可能</small>
-          <%= f.attachment_field :post_images_files, multiple: true, direct: true, presigned: true, id:"inputImage", class:"form-control-file" %>
+          <%= f.attachment_field :post_images_files, multiple: true, direct: true,  id:"inputImage", class:"form-control-file" %>
         </div>
         <div class="form-label-group">
           <label for= "inputTag", class= "col-sm-2 col-form-label">タグ</label><small>※複数つけるには' , 'で区切ってください(最大5)</small>

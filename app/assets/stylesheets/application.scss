@@ -35,11 +35,12 @@ font-family: "Roboto", "Arial","sans-serif";
 /* header */
 
 
-.container.header {
+header {
     border-bottom: 2px solid #8E6E38;
+    background-color:#99b6b4;
 }
 
-.navbar-brand  h1, .header-logo, 
+.navbar-brand  h1, .header-logo,
 .dropdown-menu,.dropdown-item,
 .list-item.nav {
     color: #1F1E23;
@@ -57,12 +58,22 @@ font-family: "Roboto", "Arial","sans-serif";
     color: #1F1E23;
 }
 
+
+//page card
+.card {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-bottom: 1px solid #99b6b4;
+}
+
+
 //footer
 
 footer {
+  border-top: 2px solid #8E6E38;
   background-color:#99b6b4;
   width: 100%;
-  
+
 }
 
 
@@ -78,13 +89,3 @@ footer {
 .footer-column-item {
     display: grid;
 }
-
-
-.card {
-    background-color: #fff;
-    border: 1px solid #eee;
-    border-bottom: 1px solid #99b6b4;
-}
-
-
-

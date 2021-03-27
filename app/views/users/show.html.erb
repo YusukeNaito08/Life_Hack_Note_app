@@ -5,33 +5,16 @@
 
 
   <div class= "col-md-8 mb-4">
-  <% @posts.each do |post| %>
-      <div class= "card post">
-        <div class= "card-header bg-transparent border-bottom-0 "> <%= attachment_image_tag post.user,
-          :image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size:'50x50', class:"float-left rounded-circle" %>
-        <div class="float-right fas fa-bookmark">
-          <%= post.bookmarks_count %>
-        </div>
-        </div>
-        <div class= "card-body">
-          <blockquote class= "blockquote"><%=link_to post.title, post_path(post.id), class: "card-title" %></blockquote>
-          <figcaption>
-          <small class="text-muted"><%= post.created_at %></small>
-          </figcaption>
-            <div class= footer>
-            <% post.tags.each do |tag| %>
-              <small class="fas fa-tag">
-              <%=tag.tag_name %>
-              </small>
-            <% end %>
-            </div>
-          </div>
-        </div>
+    <div class="form-group form-inline">
+      <%= search_form_for @q , url: user_path(current_user) do |f| %>
+        <%= f.search_field :title_or_content_cont, placeholder: "Title or Contents", class: "form-control" %>
+        <%= f.button :type => "submit", style: 'border-style: none;' do %>
+          <i class='fas fa-search'></i>
+        <% end %>
       <% end %>
     </div>
-    <div class="paginate">
-      <%= paginate(@posts) %>
-    </div>
+   
+   <%= render 'posts/index-card', posts: @posts %>
   
     <span id="back">
       <a href="#">

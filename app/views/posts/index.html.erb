@@ -4,13 +4,13 @@
     <div class="sort-list">
     <ul class="list-group w-50 mb-5" >
       <li class= "list-group-item">
-        <%= sort_link(@q, :bookmarks_count, 'Bookmark', default_order: :desc)%>
+        <%= sort_link(@q, :bookmarks_count, 'ブックマーク数順', default_order: :desc)%>
       </li>
       <li class= "list-group-item">
-        <%= sort_link(@q, :impressions_count, 'View', default_order: :desc) %>
+        <%= sort_link(@q, :impressions_count, '観覧順', default_order: :desc) %>
       </li>
       <li class= "list-group-item" >
-        <%= sort_link(@q, :created_at, 'Date', default_order: :asc) %>
+        <%= sort_link(@q, :created_at, '日付順', default_order: :asc) %>
       </li>
     </ul>
     </div>
@@ -25,6 +25,7 @@
          <i class='fas fa-search'></i>
       <% end %>
     <% end %>
+    </div>
     </div>
     <div class="rank-tag-all">
       <div class= "rank-tag-header">
@@ -44,7 +45,6 @@
       </div>
     </div>
   </div>
-  </div>
   <div class= "col-md-8">
     <div class="row">
       <div class="col-md-12">
@@ -58,34 +58,8 @@
     </div>
     </div>
   </div>
-    <% @posts.each do |post| %>
-      <div class= "card">
-        <div class= "card-header bg-transparent border-bottom-0 "> <%= attachment_image_tag post.user,
-          :image, :fill, 40, 40, format: 'jpeg', size:'50x50',fallback: "no_image.jpg", class:"float-left rounded-circle" %>
-        <div class="float-right fas fa-bookmark">
-          <%= post.bookmarks_count %>
-        </div>
-        </div>
-        <div class= "card-body">
-          <blockquote class= "blockquote"><%=link_to post.title, post_path(post.id), class: "card-title" %></blockquote>
-          <figcaption>
-          <small class="text-muted"><%=l post.created_at, format: :short %></small>
-          </figcaption>
-            <div class= footer>
-            <% post.tags.each do |tag| %>
-              <small class="fas fa-tag">
-              <%=tag.tag_name %>
-              </small>
-            <% end %>
-            <small class="float-right fas fa-eye">
-          <%= post.impressions_count %>
-          </small>
-
-            </div>
-          </div>
-      </div>
-    <% end %>
-    <%= paginate(@posts) %>
-    </div>
+   
+   <%= render 'posts/index-card', posts: @posts %>
+   
     </div>
 </div>

@@ -1,9 +1,9 @@
 <div class= "container">
-  <div class= "row">
+  <div class= "row mt-3 mb-5">
 
   <%= render 'users/profile', user: @user %>
-  
-  
+
+
     <div class= "col md-8">
       <div class= "card">
         <div class= "card-header bg-transparent border-bottom-0">
@@ -13,9 +13,9 @@
         <div class= "card-body">
           <p class= "card-title"><%= @post.title %></p>
           <p><small class="text-muted"><%=l @post.created_at, format: :short %></small></p>
-          <p class= "card-text"><%= @post.content %></p>
+          <p class= "card-text"><%= safe_join(@post.content.split("\n"),tag(:br)) %></p>
           <% @post_images_files.each do |file| %>
-              <%= attachment_image_tag file, :file,  class:"card-img" %>
+              <%= attachment_image_tag file, :file, :limit, 150, 150, class:"card-img" %>
             <% end %>
           <% @tags.each do |tag| %>
           <small class="fas fa-tag">

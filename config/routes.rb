@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users 
-  devise_scope :user do 
-    post 'users/guest_sign_in'  =>  'users/sessions#new_guest'
+  devise_for :users
+  devise_scope :user do
+    post 'users/guest_sign_in' => 'users/sessions#new_guest'
   end
-  
+
   root to: 'homes#top'
-  get '/about' => 'homes#about'
   resources :users, only: [:show, :edit, :update] do
     member do
       get :bookmarks
@@ -16,11 +15,7 @@ Rails.application.routes.draw do
   patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
 
   resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
-   resource :bookmarks, only:[:create,:destroy]
+    resource :bookmarks, only: [:create, :destroy]
   end
-  resources :inquiries, only:[:new, :create]
+  resources :inquiries, only: [:new, :create]
 end
-
-
-
-

@@ -10,14 +10,13 @@ class User < ApplicationRecord
 
   attachment :image
 
-  validates :name,  presence: true, uniqueness: true, length: {maximum: 10 }
+  validates :name,  presence: true, uniqueness: true, length: { maximum: 10 }
   validates :email, presence: true, uniqueness: true
 
-  #ゲストユーザー
+  # ゲストユーザー
   def self.guest
     find_or_create_by!(name: 'ゲストユーザー', email: 'guest@lifehacknote.com') do |user|
-    user.password = SecureRandom.urlsafe_base64
+      user.password = SecureRandom.urlsafe_base64
     end
   end
-
 end

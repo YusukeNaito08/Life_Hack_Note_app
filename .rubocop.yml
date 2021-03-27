@@ -1,5 +1,10 @@
-nherit_from:
+inherit_from:
   - .rubocop_airbnb.yml
+  
+  
+LineLength:
+  Max: 120
+  
   
 
 AllCops:

@@ -1,0 +1,30 @@
+ <% @posts.each do |post| %>
+      <div class= "card">
+        <div class= "card-header bg-transparent border-bottom-0 "> <%= attachment_image_tag post.user,
+          :image, :fill, 40, 40, format: 'jpeg', size:'50x50',fallback: "no_image.jpg", class:"float-left rounded-circle" %>
+        <div class="float-right fas fa-bookmark">
+          <%= post.bookmarks_count %>
+        </div>
+        </div>
+        <div class= "card-body">
+          <blockquote class= "blockquote"><%=link_to post.title, post_path(post.id), class: "card-title" %></blockquote>
+          <figcaption>
+          <small class="text-muted"><%=l post.created_at, format: :short %></small>
+          </figcaption>
+            <div class= footer>
+            <% post.tags.each do |tag| %>
+              <small class="fas fa-tag">
+              <%=tag.tag_name %>
+              </small>
+            <% end %>
+            <small class="float-right fas fa-eye">
+          <%= post.impressions_count %>
+          </small>
+          </div>
+          </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="paginate">
+    <%= paginate(@posts) %>
+  </div>
