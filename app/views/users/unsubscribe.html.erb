@@ -1,15 +1,19 @@
-<div class= "container">
-  <div class= "row">
-    <div class= "mx-auto mb-5">
-      <h4>Life Hack Note</h4>
+<div class= "container my-5 ">
+  <div class= "row my-5 ">
+    <div class= "col-md-4 mx-auto my-5 mb-5">
+      <h2>Life Hack Note</h2>
     </div>
   </div>
-  <div class= "col-md-6 mx-auto text-center">
-      <p class= "mb-5">退会手続きをされますと、全ての投稿が削除され、
-        再度ご利用をいただく場合には、新規登録のお手続きが必要になります。本当に退会してよろしいでしょうか?</p>
+  <div class= "col-md-4 my-5 mx-auto">
+    <div class=" row unsubscribe-text my-5">
+      <h3 >退会手続きをされますと、全ての投稿が削除され、
+        再度ご利用をいただく場合には、新規登録のお手続きが必要になります。本当に退会してよろしいでしょうか?</h3>
+    </div>
+    <div class="row unsubscribe-box my-5 mx-auto">
       <%= link_to "Unsubscribe",  withdrawal_path, method: :patch, 
-        data: {confirm: "本当に削除しますか？"}, class:"card-link btn btn-danger" %>
-      <%= link_to "Cancel", edit_user_path(current_user), class:"card-link btn btn-success" %>  
+        data: {confirm: "本当に削除しますか？"}, class:"card-link btn btn-danger btn-lg" %>
+      <%= link_to "Cancel", edit_user_path(current_user), class:"card-link btn btn-success btn-lg" %>  
+    </div>
   </div>
 </div>
 

@@ -13,6 +13,98 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap";
+@import 'bootstrap';
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+@import 'homes';
+@import 'posts';
+@import 'users';
+@import 'tagsinput';
+
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: "Roboto", "Arial","sans-serif";
+}
+
+.link_to {
+  color: #1F1E23;
+}
+.link_to:hover {
+  color: #1F1E23;
+}
+
+
+/* header */
+
+
+header {
+    border-bottom: 2px solid #8E6E38;
+    background-color:#99b6b4;
+}
+
+.navbar-brand  h1, .header-logo,
+.dropdown-menu,.dropdown-item,
+.list-item.nav {
+    color: #1F1E23;
+}
+
+.list-item.nav {
+    margin: 0 5px;
+}
+
+.dropdown-menu,.dropdown-item {
+    padding-left: 5px;
+}
+
+.header-logo:hover {
+    color: #1F1E23;
+}
+
+
+//page card
+.card {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-bottom: 1px solid #99b6b4;
+}
+
+
+
+#back {
+  position: fixed;
+  right: 30px;
+  bottom: 60px;
+   z-index: 999; 
+}
+#back, i {
+  font-size: 1.5em;
+  color:#111111;
+}
+
+//footer
+
+footer {
+  border-top: 2px solid #8E6E38;
+  background-color:#99b6b4;
+  width: 100%;
+
+}
+
+
+.footer-title, .footer-subtitle,
+.footer-column {
+  margin: 0 auto;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.footer-column-item {
+    display: grid;
+}
+
+
