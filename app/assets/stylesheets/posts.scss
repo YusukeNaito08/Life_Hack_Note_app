@@ -5,6 +5,7 @@
 
 
 
+//card
 
 .blockquote {
   margin-bottom: 0px;
@@ -19,4 +20,14 @@
 }
 .rank-tag-number {
   padding-right: 10px;
+}
+
+.list-group-item {
+  border: none;
+   border-bottom: 1px solid  #99b6b4 ;
+}
+
+.rank-tag {
+  margin-bottom: 15px;
+  border-bottom:1px solid  #99b6b4 ;
 }

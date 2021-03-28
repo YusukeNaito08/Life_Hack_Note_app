@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
+  
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  
+  root to: 'homes#top'
+
   devise_for :users
   devise_scope :user do
-    post 'users/guest_sign_in' => 'users/sessions#new_guest'
+      post 'users/guest_sign_in' => 'users/sessions#new_guest'
   end
-
-  root to: 'homes#top'
+ 
   resources :users, only: [:show, :edit, :update] do
     member do
       get :bookmarks

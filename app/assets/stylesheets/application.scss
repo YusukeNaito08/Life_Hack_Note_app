@@ -29,7 +29,12 @@ box-sizing: border-box;
 font-family: "Roboto", "Arial","sans-serif";
 }
 
-
+.link_to {
+  color: #1F1E23;
+}
+.link_to:hover {
+  color: #1F1E23;
+}
 
 
 /* header */
@@ -67,6 +72,18 @@ header {
 }
 
 
+
+#back {
+  position: fixed;
+  right: 30px;
+  bottom: 60px;
+   z-index: 999; 
+}
+#back, i {
+  font-size: 1.5em;
+  color:#111111;
+}
+
 //footer
 
 footer {
@@ -89,3 +106,5 @@ footer {
 .footer-column-item {
     display: grid;
 }
+
+

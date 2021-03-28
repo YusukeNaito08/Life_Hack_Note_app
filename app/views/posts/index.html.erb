@@ -1,22 +1,22 @@
 <div class= "container">
   <div class="row mt-5">
-  <div class="col-md-4 mt-5">
+  <div class="col-md-4 col-sm-4 col-xs-4 mt-5">
     <div class="sort-list">
-    <ul class="list-group w-50 mb-5" >
+    <ul class="list-group w-md-50 w-sm-50 mb-5" >
       <li class= "list-group-item">
-        <%= sort_link(@q, :bookmarks_count, 'ブックマーク数順', default_order: :desc)%>
+        <%= sort_link(@q, :bookmarks_count, 'ブックマーク順',{ default_order: :desc }, { class: "link_to"} ) %>
       </li>
       <li class= "list-group-item">
-        <%= sort_link(@q, :impressions_count, '観覧順', default_order: :desc) %>
+        <%= sort_link(@q, :impressions_count, '観覧順',{ default_order: :desc }, { class: "link_to"} )%>
       </li>
       <li class= "list-group-item" >
-        <%= sort_link(@q, :created_at, '日付順', default_order: :asc) %>
+        <%= sort_link(@q, :created_at, '日付順',{ default_order: :desc }, { class: "link_to"} ) %>
       </li>
     </ul>
     </div>
     <div class="search-tag-container mb-5">
       <div class="tag-container-header">
-        <p>タグで探す</p>
+        <p><strong>タグで探す</strong></p>
       </div>
       <div class="form-group form-inline tag">
       <%= search_form_for @q  do |f| %>
@@ -29,23 +29,21 @@
     </div>
     <div class="rank-tag-all">
       <div class= "rank-tag-header">
-        <p>タグ Top 5</p>
+        <p><strong>タグ Top 5</strong></p>
       </div>
       <div class="rank-tag-contents">
       <% @tag_ranks.each.with_index do |tag,i| %>
-        <div class="rank-tag">
+        <div class="rank-tag mb-5">
           <div class="rank-tag-number">
             <%= i + 1 %>
           </div>
-          <span class="fas far-tag">
-            <%= tag.first %>(<%=tag.second %>)
-          </span>
+          <span class="fas fa-tag"></span><%= tag.first %>(<%=tag.second %>)
         </div>
       <% end %>
       </div>
     </div>
   </div>
-  <div class= "col-md-8">
+  <div class= "col-md-8 col-sm-8 col-xs-8 ">
     <div class="row">
       <div class="col-md-12">
       <div class="form-group form-inline float-right">
