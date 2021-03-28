@@ -1,45 +1,20 @@
 <div class= "container">
   <div class= "row mt-5">
-    
+
   <%= render 'users/profile', user: @user %>
 
-    
+
   <div class= "col-md-8 mb-4">
-  <% @posts.each do |post| %>
-      <div class= "card">
-        <div class= "card-header"> <%= attachment_image_tag post.user,
-          :image, :fill, 30, 30, format: 'jpeg', fallback: "no_image.jpg", class:"float-left rounded-circle"  %>
-          <div class="float-right">
-
-          </div>
-        </div>
-        <div class= "card-body ">
-          <h5 class= "card-title">#<%= link_to post.title, post_path(post.id) %></h5>
-
-        </div>
-        <div class= "card-footer">
-          <div class="float-right">
-            <p>いいね数</p>
-          </div>
-          <div class="float-left">
-            <p>view</p>
-          </div>
-        </div>
-      </div>
-  <% end %>
+    <div class="form-group form-inline">
+      <%= search_form_for @q , url: user_path(current_user) do |f| %>
+        <%= f.search_field :title_or_content_cont, placeholder: "Title or Contents", class: "form-control" %>
+        <%= f.button :type => "submit", style: 'border-style: none;' do %>
+          <i class='fas fa-search'></i>
+        <% end %>
+      <% end %>
     </div>
-    
-    
-    
-    <span id="back">
-      <a href="#">
-        <i class="fas fa-arrow-circle-up"></i>
-      </a>
-    </span>
-    
-    
-    
-    
-  <%= link_to "お問い合わせ", new_inquiry_path %>
+   
+   <%= render 'posts/index-card', posts: @posts %>
+   
   </div>
 </div>

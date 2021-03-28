@@ -25,23 +25,21 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-  
+
   def new_guest
-    user= User.guest
+    user = User.guest
     sign_in user
-    flash[:notice]= 'ゲストユーザーとしてログインしました。'
-    redirect_to posts_path 
+    flash[:notice] = 'ゲストユーザーとしてログインしました。'
+    redirect_to posts_path
   end
-  
-  
+
   def reject_inactive_user
-    @user= User.find_by(email: params[:User][:email])
+    @user = User.find_by(email: params[:User][:email])
     if @customer
       if @user.valid_password?(params[:user][:password]) && @user.is_deleted
-        flash[:notice]= "退会済みです。再度ご登録をしてご利用ください。"
+        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
         redirect_to new_user_session_path
       end
     end
   end
-  
 end

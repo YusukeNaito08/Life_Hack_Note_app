@@ -1,9 +1,7 @@
 require 'rails_helper'
 
-
 describe 'ユーザログイン前のテスト' do
-  
-    describe 'ユーザ新規登録のテスト' do
+  describe 'ユーザ新規登録のテスト' do
     before do
       visit new_user_registration_path
     end
@@ -24,8 +22,9 @@ describe 'ユーザログイン前のテスト' do
         expect(current_path).to eq '/users/' + User.last.id.to_s
       end
     end
-  end 
-   describe 'ユーザログイン' do
+  end
+
+  describe 'ユーザログイン' do
     let(:user) { create(:user) }
 
     before do
@@ -56,6 +55,4 @@ describe 'ユーザログイン前のテスト' do
       end
     end
   end
-
- 
-  end
+end

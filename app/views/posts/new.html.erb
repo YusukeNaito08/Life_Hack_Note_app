@@ -1,36 +1,29 @@
-  <div class= "col-md-8 mb-3">
-    <%= form_with(model: [@tag,@post], local: true) do|f| %>
-      <div class= "row mb-3">
-        <label for= "inputTitle", class= "col-sm-2 col-form-label">Title</label>
-        <div class=  "col-sm-10">
+<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+  <div class="card  my-5">
+    <div class="card-body">
+      <h5 class="card-title text-center">新規投稿</h5>
+        <%= form_with(model: [@tag,@post], local: true) do|f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
+        <div class="form-label-group">
+          <label for="inpuTtitle">タイトル</label>
           <%= f.text_field :title, id:"inputTitle", class:"form-control" %>
         </div>
-      </div>
-      <div class= "row mb-3">
-        <label for= "inpuContent", class= "col-sm-2 col-form-label">Content</label>
-        <div class=  "col-sm-10">
-          <%= f.text_area :content, id:"inputContent",class:"form-control" %>
+        <div class="form-label-group">
+          <label for= "inpuContent", class= "col-sm-2 col-form-label">内容</label>
+          <%= f.text_area :content, rows: "7",id:"inputContent",class:"form-control" %>
         </div>
-      </div>
-      <div class= "row mb-3">
-        <label for= "inputImage", class= "col-sm-2 col-form-label">Image</label>
-        <div class= "col-sm-10">
-          <%= f.attachment_field :post_images_files, multiple: true, direct: true, presigned: true %>
+        <div class="form-label-group">
+          <label for= "inputImage", class= "col-sm-3 col-form-label">ファイル</label>
+          <small>＊shift + クリックまたはctrl + クリックで複数画像を選択可能</small>
+          <%= f.attachment_field :post_images_files, multiple: true, direct: true, presigned: true, id:"inputImage", class:"form-control-file" %>
         </div>
-      </div>
-      <div class= "row mb-3">
-        <label for= "", class= "col-sm-2 col-form-label">Tag</label>
-        <div class= "col-sm-10">
-          <%= f.text_field :tag_name %>
+        <div class="form-label-group">
+          <label for= "inputTag", class= "col-sm-2 col-form-label">タグ</label><small>＊複数つけるには' , 'で区切ってください（最大5)</small>
+          <%= f.text_field :tag_name, data: {role: "tagsinput"}, class:"form-control" %>
         </div>
+        <hr class="my-4">
+        <%= f.submit "投稿", class: "btn btn-lg btn-primary btn-block text-uppercase"%>
+      <% end %>
       </div>
-      <div class= "row">
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-				  <div class="text-right">
-				    <%= f.submit "Create", class:"btn btn-primary" %>
-			    </div>
-			  </div>
-      </div>
-    <% end %>
-    </div>
-  
+    </div>           
+  </div>             

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
- describe 'バリデーションのテスト' do
+  describe 'バリデーションのテスト' do
     subject { user.valid? }
 
     let!(:other_user) { create(:user) }
@@ -44,10 +44,11 @@ RSpec.describe User, type: :model do
         expect(User.reflect_on_association(:posts).macro).to eq :has_many
       end
     end
+
     context 'Bookmarkモデルとの関係' do
       it '1:Nになっている' do
         expect(User.reflect_on_association(:bookmarks).macro).to eq :has_many
-      end  
-    end  
+      end
+    end
   end
 end

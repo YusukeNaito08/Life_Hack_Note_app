@@ -14,17 +14,19 @@
 //= require bootstrap-sprockets
 /*global $*/
 
+//= require tagsinput
 //= require jquery
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
 
-
+//Top画面
 $(function () {
 $('div#top-info').css('display', 'none').fadeIn(3000);
 });
 
+//スクロール
 $(function() {
   $('#back i').on('click',function(event){
     $('body, html').animate({
@@ -33,4 +35,5 @@ $(function() {
     event.preventDefault();
   });
 });
+
 

@@ -4,9 +4,8 @@
 
 
 
-.dropdown-toggle{
-float: right;
-}
+
+//card
 
 .blockquote {
   margin-bottom: 0px;
@@ -15,8 +14,20 @@ float: right;
   color: #000000 ;
 }
 }
+.rank-tag {
+  display: flex;
+  margin-bottom: 10px;
+}
+.rank-tag-number {
+  padding-right: 10px;
+}
 
-.dropdown-item{
-  padding: 5px 0;
-  
+.list-group-item {
+  border: none;
+   border-bottom: 1px solid  #99b6b4 ;
+}
+
+.rank-tag {
+  margin-bottom: 15px;
+  border-bottom:1px solid  #99b6b4 ;
 }

@@ -1,4 +1,4 @@
 class PostImage < ApplicationRecord
   belongs_to :post
-  attachment :file
+  attachment :file, type: :image
 end
