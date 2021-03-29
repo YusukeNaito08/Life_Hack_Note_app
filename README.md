@@ -14,12 +14,12 @@
  報を発信・共有するサイトが少ないと感じた為
  
  ### ターゲットユーザ
-*生活を便利にする便利術のみを知りたい人
-*自身の得た情報のメモとしても活用した人
+* 生活を便利にする便利術のみを知りたい人
+*  自身の得た情報のメモとしても活用した人
 
 ### 主な利用シーン
-*様々な投稿から検索し解決法を見つけたい時
-*自身で気づいた便利術を共有したい時
+* 様々な投稿から検索し解決法を見つけたい時
+* 自身で気づいた便利術を共有したい時
 
 ***
 
@@ -27,43 +27,43 @@
 [ER図](https://app.diagrams.net/#G1TiFFb4I5y8jTzFg-88dzxIWKjW9hn5bZ)
 
 ## 機能一覧
-*ユーザー登録・ログイン機能(device)
-*管理者機能(rails_admin)
-*管理者権限(cancancan)
-*複数画像アップロード機能(refile)
-*検索・ソート機能(ransack)
-*タグ付け機能
-*いいね機能(Ajax)
-*ランキング
-*お問い合わせ機能(ActionMailer)
+* ユーザー登録・ログイン機能(device)
+* 管理者機能(rails_admin)
+* 管理者権限(cancancan)
+* 複数画像アップロード機能(refile)
+* 検索・ソート機能(ransack)
+* タグ付け機能
+* いいね機能(Ajax)
+* ランキング
+* お問い合わせ機能(ActionMailer)
 <br>
-*追加機能予定有
- *随時更新(3/29〜)
+* 追加機能予定有
+ * 随時更新(3/29〜)
 
-###フロントエンド
-*Bootstrap 4.5.0
-*jQuery、Ajax
+### フロントエンド
+* Bootstrap 4.5.0
+* jQuery、Ajax
 
-###バックエンド
-*Ruby 2.6.3
-*Rails 5.2.4.5
+### バックエンド
+* Ruby 2.6.3
+* Rails 5.2.4.5
 
 ##テスト
-*Rspec(単体/総合) (＊実装中3/29〜)
+* Rspec(単体/総合) (＊実装中3/29〜)
 
-##その他使用技術
-*Rubocop-airbnb
-*bullet（N+1問題)
-*チーム開発を意識したGitHubの活用(ブランチ、プルリク、マージ)
+## その他使用技術
+* Rubocop-airbnb
+* bullet（N+1問題)
+* チーム開発を意識したGitHubの活用(ブランチ、プルリク、マージ)
 
 ## 開発環境
-*OS：Linux(CentOS)
-*IDE：Cloud9
+* OS：Linux(CentOS)
+* IDE：Cloud9
 
-##本番環境
-*AWS (EC2・RDS for MySQL)
-*Nginx・Puma
-*MySQL2
+## 本番環境
+* AWS (EC2・RDS for MySQL)
+* Nginx・Puma
+* MySQL2
 
 
 
