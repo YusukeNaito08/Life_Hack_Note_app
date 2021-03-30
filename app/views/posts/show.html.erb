@@ -15,7 +15,7 @@
           <p><small class="text-muted"><%=l @post.created_at, format: :short %></small></p>
           <p class= "card-text"><%= safe_join(@post.content.split("\n"),tag(:br)) %></p>
           <% @post_images_files.each do |file| %>
-              <%= attachment_image_tag file, :file, :limit, 150, 150, class:"card-img" %>
+              <%= attachment_image_tag file, :file, class:"card-img" %>
             <% end %>
           <% @tags.each do |tag| %>
           <small class="fas fa-tag">
