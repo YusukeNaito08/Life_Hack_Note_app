@@ -1,6 +1,29 @@
 require 'rails_helper'
 
-describe 'ユーザログイン前のテスト' do
+describe 'ユーザーログイン前のテスト' do
+  
+  describe 'top画面のテスト' do
+    before do
+      visit root_path
+    end
+
+  context '表示内容の確認' do
+    it 'URLが正しい' do
+        expect(current_path).to eq '/'
+      end
+  
+    it 'Sign_in リンクの内容が正しい' do
+      find_link("Sign In").click
+      expect(current_path).to eq '/users/sign_in'
+    end
+    
+    it 'Sign_up リンクの内容が正しい' do
+      find_link("Sign Up").click
+      expect(current_path).to eq '/users/sign_up'
+    end
+  end
+end
+  
   describe 'ユーザ新規登録のテスト' do
     before do
       visit new_user_registration_path
@@ -22,9 +45,22 @@ describe 'ユーザログイン前のテスト' do
         expect(current_path).to eq '/users/' + User.last.id.to_s
       end
     end
+    context '新規登録失敗のテスト' do
+      before do
+        fill_in 'user[name]', with: ""
+        fill_in 'user[email]', with: ""
+        fill_in 'user[password]', with: ""
+        fill_in 'user[password_confirmation]', with: ""
+
+      end
+
+      it '新規登録に失敗し、新規登録画面にリダイレクトされる' do
+        expect(current_path).to eq '/users/sign_up'
+      end
+    end
   end
 
-  describe 'ユーザログイン' do
+  describe 'ユーザログインのテスト' do
     let(:user) { create(:user) }
 
     before do
@@ -56,3 +92,4 @@ describe 'ユーザログイン前のテスト' do
     end
   end
 end
+
