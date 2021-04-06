@@ -76,14 +76,15 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 
 gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-s3"
+gem 'dotenv-rails'
 gem "refile-mini_magick"
-gem 'kaminari', '~> 1.2.1'
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
+gem 'kaminari', '~> 1.2.1'
 gem 'ransack'
-gem 'dotenv-rails'
-gem 'cancancan'
 gem 'rails_admin', '~> 2.0.0.beta'
+gem 'cancancan'
 gem 'rails-i18n' # 日本語化
 gem 'impressionist', '~>1.6.1'
