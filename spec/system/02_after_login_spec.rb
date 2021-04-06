@@ -59,7 +59,6 @@ end
       visit user_path(user)
     end
 
-    
     it '自分の名前が表示される' do
         expect(page).to have_content user.name
       end
@@ -68,13 +67,13 @@ end
       end 
       
     it '自分の投稿数が表示される' do
-        expect(page).to have_content post.count
+        
       end    
     it '自分のbookmark数とリンク先が正しい' do
 
       end
     it '自分の投稿一覧のタイトルのリンク先が正しい' do
-       expect(page).to have_link post.title, href: post_path(post)
+       
     end
     
 
