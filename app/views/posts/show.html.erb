@@ -7,7 +7,7 @@
     <div class= "col md-8">
       <div class= "card">
         <div class= "card-header bg-transparent border-bottom-0">
-        <%= attachment_image_tag @post.user, :image, :fill, 40, 40, fallback: "no_image.jpg", size:'50x50', class:"float-left rounded-circle"  %>
+        <%= attachment_image_tag @post.user, :image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size:'50x50', class:"float-left rounded-circle"  %>
         <%= @post.user.name %>
         </div>
         <div class= "card-body">
