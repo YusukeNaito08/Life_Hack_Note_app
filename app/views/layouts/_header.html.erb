@@ -15,7 +15,7 @@
         <li class= "nav-item dropdown">
           <a class= "nav-link  dropdown-toggle" data-toggle= "dropdown" aria-expanded= "false" id:"navbarDropdown" role= "button">
             <%= attachment_image_tag current_user,
-            :image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size: "50x50", class:"float-left rounded-circle"%>
+            :image, fallback: "no_image.jpg", size: "50x50", class:"float-left rounded-circle"%>
           </a>
             <ul class= "dropdown-menu",  aria-labelledby= "navbarDropdown">
               <% if current_user.try(:admin?) %>
