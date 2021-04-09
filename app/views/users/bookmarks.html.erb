@@ -7,7 +7,7 @@
     <% @bookmark_list.each do |bookmark_post| %>
       <div class= "card post">
         <div class= "card-header bg-transparent border-bottom-0 "> <%= attachment_image_tag bookmark_post.user,
-          :image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg",size:'50x50', class:"float-left rounded-circle" %>
+          :image, fallback: "no_image.jpg",size:'50x50', class:"float-left rounded-circle" %>
         <div class="float-right fas fa-bookmark">
           <%= bookmark_post.bookmarks.count %>
         </div>
