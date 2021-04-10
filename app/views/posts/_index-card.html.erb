@@ -1,7 +1,7 @@
  <% @posts.each do |post| %>
       <div class= "card">
         <div class= "card-header bg-transparent border-bottom-0 "> <%= attachment_image_tag post.user,
-          :image, :fill, 40, 40, format: 'jpeg', size:'50x50',fallback: "no_image.jpg", class:"float-left rounded-circle" %>
+          :image, size:'50x50',fallback: "no_image.jpg", class:"float-left rounded-circle" %>
         <div class="float-right fas fa-bookmark">
           <%= post.bookmarks_count %>
         </div>
