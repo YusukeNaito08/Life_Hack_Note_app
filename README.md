@@ -48,7 +48,7 @@ http://lifehacknote.work/
 * MySQL2
 
 ### インフラ構成図
-![](https://user-images.githubusercontent.com/75869555/114272191-15477d80-9a50-11eb-843e-5ae58f69940d.png)
+![](https://user-images.githubusercontent.com/75869555/114294339-e1646a80-9ad8-11eb-8e59-fb210923f551.png)
 
 ### その他使用技術
 * Rubocop-airbnb
