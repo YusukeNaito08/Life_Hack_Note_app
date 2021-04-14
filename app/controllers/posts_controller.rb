@@ -4,7 +4,7 @@ class PostsController < ApplicationController
     @q = Post.ransack(params[:q])
     @q.sorts = 'updated_at desc' if @q.sorts.empty?
     @posts = @q.result.includes(:user, :tags, :post_tag_rerations).page(params[:page]).per(8)
-    @tag_ranks = PostTagReration.joins(:tag).group("tag_name").limit(5).order('count_all DESC').count
+    @tag_ranks = PostTagReration.joins(:tag).group('tag_name').limit(5).order('count_all DESC').count
   end
 
   def new
@@ -18,10 +18,10 @@ class PostsController < ApplicationController
     tag_list = params[:post][:tag_name].split(',')
     if @post.save
       @post.save_posts(tag_list)
-      flash[:notice] = "投稿しました"
+      flash[:notice] = '投稿しました'
       redirect_to user_path(@post.user_id)
     else
-      flash[:alert] = "投稿に失敗しました"
+      flash[:alert] = '投稿に失敗しました'
       render :new
     end
   end
@@ -36,7 +36,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @tag_list = @post.tags.pluck(:tag_name).join(",")
+    @tag_list = @post.tags.pluck(:tag_name).join(',')
   end
 
   def update
@@ -48,7 +48,7 @@ class PostsController < ApplicationController
       flash[:notice] = '投稿を編集しました'
       redirect_to post_path(@post.id)
     else
-      flash[:alert] = "投稿の編集、失敗しました"
+      flash[:alert] = '投稿の編集、失敗しました'
       render :edit
     end
   end

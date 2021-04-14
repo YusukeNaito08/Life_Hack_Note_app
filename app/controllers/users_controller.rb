@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "プロフィールを変更しました"
+      flash[:notice] = 'プロフィールを変更しました'
       redirect_to user_path(current_user)
     else
       render :edit
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
   def bookmarks
     @user = User.find(params[:id])
-    bookmark= Bookmark.where(user_id: @user.id).pluck(:post_id)  
+    bookmark= Bookmark.where(user_id: @user.id).pluck(:post_id)
     @bookmark_list = Post.includes(:tags,:user).find(bookmark)
   end
 
@@ -44,5 +44,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :image)
   end
-  
+
 end

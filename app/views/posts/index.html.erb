@@ -1,56 +1,55 @@
-<div class= "container">
-  <div class="row mt-5">
-  <div class="col-md-4 col-sm-4 col-xs-4 mt-5">
-    <div class="sort-list">
-    <ul class="list-group w-md-50 w-sm-50 mb-5" >
-      <li class= "list-group-item">
-        <%= sort_link(@q, :bookmarks_count, 'ブックマーク順',{ default_order: :desc }, { class: "link_to"} ) %>
+<div class= 'container'>
+  <div class= 'row mt-5'>
+  <div class= 'col-md-4 col-sm-4 col-xs-4 mt-5'>
+    <div class= 'sort-list'>
+    <ul class= 'list-group w-md-50 w-sm-50 mb-5' >
+      <li class= 'list-group-item'>
+        <%= sort_link(@q, :bookmarks_count, 'ブックマーク順',{ default_order: :desc }, { class: 'link_to'} ) %>
       </li>
-      <li class= "list-group-item">
+      <li class= 'list-group-item'>
         <%= sort_link(@q, :impressions_count, '観覧順',{ default_order: :desc }, { class: "link_to"} )%>
       </li>
-      <li class= "list-group-item" >
-        <%= sort_link(@q, :created_at, '日付順',{ default_order: :desc }, { class: "link_to"} ) %>
+      <li class= 'list-group-item' >
+        <%= sort_link(@q, :created_at, '日付順',{ default_order: :desc }, { class: 'link_to'} ) %>
       </li>
     </ul>
     </div>
-    <div class="search-tag-container mb-5">
-      <div class="tag-container-header">
+    <div class= 'search-tag-container mb-5'>
+      <div class= 'tag-container-header'>
         <p><strong>タグで探す</strong></p>
       </div>
-      <div class="form-group form-inline tag">
+      <div class= 'form-group form-inline tag'>
       <%= search_form_for @q  do |f| %>
-      <%= f.search_field :tags_tag_name_cont, placeholder: "tags",  class: "form-control" %>
-      <%= f.button :type => "submit", style: 'border-style: none;' do %>
-         <i class='fas fa-search'></i>
+      <%= f.search_field :tags_tag_name_cont, placeholder: 'tags',  class: 'form-control' %>
+      <%= f.button :type => 'submit', style: 'border-style: none;' do %>
+         <i class= 'fas fa-search'></i>
       <% end %>
     <% end %>
     </div>
     </div>
-    <div class="rank-tag-all">
-      <div class= "rank-tag-header">
+    <div class= 'rank-tag-all'>
+      <div class= 'rank-tag-header'>
         <p><strong>タグ Top 5</strong></p>
       </div>
-      <div class="rank-tag-contents">
+      <div class= 'rank-tag-contents'>
       <% @tag_ranks.each.with_index do |tag,i| %>
-        <div class="rank-tag mb-5">
-          <div class="rank-tag-number">
+        <div class= 'rank-tag mb-5'>
+          <div class= 'rank-tag-number'>
             <%= i + 1 %>
           </div>
-          <span class="fas fa-tag"></span><%= tag.first %>(<%=tag.second %>)
+          <span class= 'fas fa-tag'></span><%= tag.first %>(<%=tag.second %>)
         </div>
       <% end %>
       </div>
     </div>
   </div>
-  <div class= "col-md-8 col-sm-8 col-xs-8 ">
-    <div class="row">
-      <div class="col-md-12">
-      <div class="form-group form-inline float-right">
+  <div class= 'col-md-8 col-sm-8 col-xs-8'>
+    <div class= 'row'>
+      <div class= 'col-md-12'>
+      <div class= 'form-group form-inline float-right'>
       <%= search_form_for @q  do |f| %>
-        <%= f.search_field :title_or_content_cont, placeholder: "Title or Contents", class: "form-control" %>
-        <%= f.button :type => "submit", style: 'border-style: none;' do %>
-          <i class='fas fa-search'></i>
+        <%= f.search_field :title_or_content_cont, placeholder: 'Title or Contents', class: 'form-control' %>
+        <%= f.button :type => 'submit', style: 'border-style: none;' do %><i class= 'fas fa-search'></i>
         <% end %>
       <% end %>
     </div>
@@ -60,4 +59,5 @@
    <%= render 'posts/index-card', posts: @posts %>
    
     </div>
+</div>
 </div>
