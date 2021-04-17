@@ -1,42 +1,44 @@
-<div class= "container">
-  <div class= "row mt-5">
-
-    <%= render 'users/profile', user: @user %>
-
-    <div class= "col-md-8 mb-4">
+<div class= 'container'>
+  <div class= 'row mt-5'>
+    
+  <%= render 'users/profile', user: @user %>
+  
+    <div class= 'col-md-8 mb-4'>
     <%= form_with model: @user, local:true do|f| %>
+    
     <%= render 'layouts/error_messages', model: f.object %>
-      <div class= "row mb-4">
-        <label for= "inputName", class= "col-sm-2 col-form-label">Name</label>
-        <div class=  "col-sm-10">
-          <%= f.text_field :name, autofocus: true, id:"inputName", class:"form-control" %>
+    
+      <div class= 'row mb-4'>
+        <label for= 'inputName', class= 'col-sm-2 col-form-label'>Name</label>
+        <div class= 'col-sm-10'>
+          <%= f.text_field :name, autofocus: true, id:'inputName', class:'form-control' %>
         </div>
       </div>
-      <div class= "row mb-4">
-        <label for= "inputimage", class= "col-sm-2 col-form-label">Image</label>
-        <div class=  "col-sm-10">
-          <%= f.attachment_field :image, direct: true, id:"inputimage" %>
+      <div class= 'row mb-4'>
+        <label for= 'inputimage', class= 'col-sm-2 col-form-label'>Image</label>
+        <div class= 'col-sm-10'>
+          <%= f.attachment_field :image, direct: true, id:'inputimage' %>
         </div>
       </div>
-      <div class= "row mb-4">
-        <label for= "inputemail", class= "col-sm-2 col-form-label">Email</label>
-        <div class= "col-sm-10">
-           <%= f.email_field :email, autocomplete: "email", class:"form-control", disabled: true %>
+      <div class= 'row mb-4'>
+        <label for= 'inputemail', class= 'col-sm-2 col-form-label'>Email</label>
+        <div class= 'col-sm-10'>
+           <%= f.email_field :email, autocomplete: 'email', class:'form-control', disabled: true %>
         </div>
       </div>
-      <div class= "row mb-4">
-        <label for= "inputpassword", class= "col-sm-2 col-form-label">Password</label>
-        <div class= "col-sm-10">
-          <%= f.password_field :password, placeholder: "******", class:"form-control", disabled: true %>
+      <div class= 'row mb-4'>
+        <label for= 'inputpassword', class= 'col-sm-2 col-form-label'>Password</label>
+        <div class= 'col-sm-10'>
+          <%= f.password_field :password, placeholder: '******', class:'form-control', disabled: true %>
         </div>
       </div>
-      <div class= "row mb-4">
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-				  <div class="text-right">
+      <div class= 'row mb-4'>
+        <div class= 'col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12'>
+				  <div class= 'text-right'>
 			    </div>
-				    <%= link_to "Unsbscribe", unsubscribe_path, class:"btn btn-danger" %>
-				    <%= link_to "Cancel", user_path(current_user.id), class:"btn btn-secondary" %>
-				    <%= f.submit "Update", class:"btn btn-primary" %>
+				    <%= link_to 'Unsbscribe', unsubscribe_path, class:'btn btn-danger' %>
+				    <%= link_to 'Cancel', user_path(current_user.id), class:'btn btn-secondary' %>
+				    <%= f.submit 'Update', class:'btn btn-primary' %>
 			  </div>
       </div>
     <% end %>

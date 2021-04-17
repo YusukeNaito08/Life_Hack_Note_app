@@ -1,20 +1,19 @@
-<div class= "container">
-  <div class= "row mt-5">
-
+<div class= 'container'>
+  <div class= 'row mt-5'>
+    
   <%= render 'users/profile', user: @user %>
-
-
-  <div class= "col-md-8 mb-4">
-    <div class="form-group form-inline">
+  
+    <div class= 'col-md-8 mb-4'>
+      <div class= 'form-group form-inline'>
       <%= search_form_for @q , url: user_path(current_user) do |f| %>
-        <%= f.search_field :title_or_content_cont, placeholder: "Title or Contents", class: "form-control" %>
-        <%= f.button :type => "submit", style: 'border-style: none;' do %>
-          <i class='fas fa-search'></i>
+        <%= f.search_field :title_or_content_cont, placeholder: 'Title or Contents', class: 'form-control' %>
+          <%= f.button :type => 'submit', style: 'border-style: none;' do %><i class= 'fas fa-search'></i>
         <% end %>
       <% end %>
+      </div>
+      
+     <%= render 'posts/index-card', posts: @posts %>
+     
     </div>
-   
-   <%= render 'posts/index-card', posts: @posts %>
-   
   </div>
 </div>

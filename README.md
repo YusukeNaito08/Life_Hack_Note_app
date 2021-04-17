@@ -48,7 +48,7 @@ http://lifehacknote.work/
 * MySQL2
 
 ### インフラ構成図
-![](https://user-images.githubusercontent.com/75869555/114272191-15477d80-9a50-11eb-843e-5ae58f69940d.png)
+![](https://user-images.githubusercontent.com/75869555/114294339-e1646a80-9ad8-11eb-8e59-fb210923f551.png)
 
 ### その他使用技術
 * Rubocop-airbnb
@@ -56,7 +56,8 @@ http://lifehacknote.work/
 * チーム開発を意識したGitHubの活用(ブランチ、プルリク、マージ)
 
 ## ER図
-![](https://user-images.githubusercontent.com/75869555/114272322-b0d8ee00-9a50-11eb-82fd-64ce032c0299.png)
+![](https://user-images.githubusercontent.com/75869555/114273092-c56ab580-9a53-11eb-89b5-83f84b424869.png)
+
 
 ## テスト
 * Rspec(単体/総合) (＊実装中)
