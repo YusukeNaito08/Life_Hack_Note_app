@@ -1,48 +1,48 @@
-<div class= "container">
-  <div class="row">
-  <div class= "nav-bar">
-    <h1>お問い合わせフォーム</h1>
-  </div>
-    <div class= "col-md-12 my-5">
+<div class= 'container'>
+  <div class= 'row'>
+    <div class= 'nav-bar'>
+      <h1>お問い合わせフォーム</h1>
+    </div>
+    <div class= 'col-md-12 my-5'>
     <%= form_with model: @inquiry, local: true do|f| %>
-      <div class= "row mb-4">
-        <label for= "inputname", class= "col-sm-2 col-form-label">名前</label>
+      <div class= 'row mb-4'>
+        <label for= 'inputname', class= 'col-sm-2 col-form-label'>名前</label>
         <div class=  "col-sm-10">
-          <%= f.text_field :name, id:"inputname", class:"form-control" %>
+          <%= f.text_field :name, id:'inputname', class:'form-control' %>
         </div>
       </div>
-      <div class= "row mb-4">
-        <label for= "inputemail", class= "col-sm-2 col-form-label">メールアドレス</label>
-        <div class=  "col-sm-10">
-          <%= f.email_field :email, id:"inputemail",class:"form-control" %>
+      <div class= 'row mb-4'>
+        <label for= 'inputemail', class= 'col-sm-2 col-form-label'>メールアドレス</label>
+        <div class=  'col-sm-10'>
+          <%= f.email_field :email, id:'inputemail',class:'form-control' %>
         </div>
       </div>
-      <div class= "row mb-4">
-        <label  class= "col-sm-2 col-form-label">お問い合わせ内容</label>
-        <div class= "col-sm-10">
-         <%= f.select :subject, Inquiry.subjects.keys, {}, class:"form-control"%>
+      <div class= 'row mb-4'>
+        <label  class= 'col-sm-2 col-form-label'>お問い合わせ内容</label>
+        <div class= 'col-sm-10'>
+          <%= f.select :subject, Inquiry.subjects.keys, {}, class:'form-control'%>
         </div>
       </div>
-      <div class= "row mb-4">
-        <label for= "inputtitle", class= "col-sm-2 col-form-label">件名</label>
-        <div class= "col-sm-10">
-        <%= f.text_field :title, id:"inputtitle", class:"form-control" %>
+      <div class= 'row mb-4'>
+        <label for= 'inputtitle', class= 'col-sm-2 col-form-label'>件名</label>
+        <div class= 'col-sm-10'>
+          <%= f.text_field :title, id:'inputtitle', class:'form-control' %>
         </div>
       </div>
-      <div class= "row mb-4">
-        <label for= "inputmessage", class= "col-sm-2 col-form-label">説明</label>
-        <div class= "col-sm-10">
-         <%= f.text_area :message, id:"inputmessage",class:"form-control" %>
+      <div class= 'row mb-4'>
+        <label for= 'inputmessage', class= 'col-sm-2 col-form-label'>説明</label>
+        <div class= 'col-sm-10'>
+          <%= f.text_area :message, id:'inputmessage',class:'form-control' %>
         </div>
       </div>
-      <div class= "row mb-4">
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-				  <div class="text-right">
-				    <%= f.submit "Create", class:"btn btn-primary" %>
+      <div class= 'row mb-4'>
+        <div class= 'col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12'>
+				  <div class= 'text-right'>
+				    <%= f.submit 'Create', class:'btn btn-primary' %>
 			    </div>
 			  </div>
       </div>
     <% end %>
     </div>
-    </div>
+  </div>
 </div>

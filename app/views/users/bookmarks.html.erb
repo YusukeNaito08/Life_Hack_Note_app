@@ -1,35 +1,34 @@
-<div class= "container">
-  <div class= "row mt-5">
-
- <%= render 'users/profile', user: @user %>
-
-   <div class= "col-md-8 mb-4">
+<div class= 'container'>
+  <div class= 'row mt-5'>
+    
+  <%= render 'users/profile', user: @user %>
+   <div class= 'col-md-8 mb-4'>
     <% @bookmark_list.each do |bookmark_post| %>
-      <div class= "card post">
-        <div class= "card-header bg-transparent border-bottom-0 "> <%= attachment_image_tag bookmark_post.user,
-          :image, fallback: "no_image.jpg",size:'50x50', class:"float-left rounded-circle" %>
-        <div class="float-right fas fa-bookmark">
+      <div class= 'card post'>
+        <div class= 'card-header bg-transparent border-bottom-0'> <%= attachment_image_tag bookmark_post.user,
+          :image, fallback: 'no_image.jpg',size:'50x50', class:'float-left rounded-circle' %>
+        <div class= 'float-right fas fa-bookmark'>
           <%= bookmark_post.bookmarks.count %>
         </div>
         </div>
-        <div class= "card-body">
-          <blockquote class= "blockquote"><%=link_to bookmark_post.title, post_path(bookmark_post.id), class: "card-title" %></blockquote>
+        <div class= 'card-body'>
+          <blockquote class= 'blockquote'><%=link_to bookmark_post.title, post_path(bookmark_post.id), class: 'card-title' %></blockquote>
           <figcaption>
-          <small class="text-muted"><%= bookmark_post.created_at %></small>
+            <small class= 'text-muted'><%= bookmark_post.created_at %></small>
           </figcaption>
-            <div class= footer>
-            <% bookmark_post.tags.each do |tag| %>
-              <small class="fas fa-tag">
+          <div class= 'card-bookmark-footer'>
+          <% bookmark_post.tags.each do |tag| %>
+            <small class= 'fas fa-tag'>
               <%=tag.tag_name %>
-              </small>
-            <% end %>
-            </div>
+            </small>
+          <% end %>
           </div>
+        </div>
       </div>
     <% end %>
     </div>
   </div>
- </div>
+</div>
 
 
 
