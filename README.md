@@ -48,7 +48,8 @@ http://lifehacknote.work/
 * MySQL2
 
 ### インフラ構成図
-![](https://user-images.githubusercontent.com/75869555/115117737-08d89d00-9fdb-11eb-8891-0a47cf28e84e.png)
+![](https://user-images.githubusercontent.com/75869555/115141055-5ace0100-a075-11eb-9617-9ea829db8add.png)
+
 
 
 ### その他使用技術
